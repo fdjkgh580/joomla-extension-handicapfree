@@ -173,8 +173,8 @@ $(function (){
                 var extName = _getFileExtension(href);
                 var fileName = _getFileName(href);
 
-                // 若是 office 文件，檢查是否含有 pdf | odt
-                if (extName == "doc" || extName == "docx"){
+                // 若是 office 文件
+                if (extName == "doc" || extName == "docx" || extName == "xls" || extName == "xlsx"){
                     return ['closeFile', href, fileName, extName];
                 }
 
