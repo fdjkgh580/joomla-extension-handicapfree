@@ -3,7 +3,7 @@
 ## 安裝方式
 - Joomla > 後台管理 > 擴充套件 > 管理 > 安裝
 - 由網址安裝
-- 貼上網址「https://github.com/fdjkgh580/joomla-extension-handicapfree/archive/master.zip」
+- 貼上網址「 https://github.com/fdjkgh580/joomla-extension-handicapfree/archive/master.zip 」
 
 ## 設定
 - Joomla > 後台管理 > 擴充套件 > 外掛 > 搜尋「plgSystemHandicapfree」
