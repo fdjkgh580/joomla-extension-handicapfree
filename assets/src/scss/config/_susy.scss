@@ -1,0 +1,23 @@
+$mobile: (
+  'min-width': 0px,
+  'columns': susy-repeat(4),
+  'gutters': 0.25,
+  'spread': 'narrow',
+  'container-spread': 'wider',
+);
+ 
+$pad: (
+  'min-width': 720px,
+  'columns': susy-repeat(8),
+  'gutters': 0.25,
+  'spread': 'narrow',
+  'container-spread': 'wider',
+);
+ 
+$desktop: (
+  'min-width': 1280px,
+  'columns': susy-repeat(12),
+  'gutters': 0.25,
+  'spread': 'narrow',
+  'container-spread': 'wider',
+);

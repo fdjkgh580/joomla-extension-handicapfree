@@ -1,0 +1,129 @@
+[
+    {
+        "name": "jsnlib/ao",
+        "version": "1.2.2",
+        "version_normalized": "1.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fdjkgh580/jsnlib-ao.git",
+            "reference": "db7afe6190c8750781b43d620e418a24db11815a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fdjkgh580/jsnlib-ao/zipball/db7afe6190c8750781b43d620e418a24db11815a",
+            "reference": "db7afe6190c8750781b43d620e418a24db11815a",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2018-05-15T01:07:25+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Jsnlib\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "easy use ArrayObject",
+        "keywords": [
+            "array",
+            "arrayobject",
+            "convert",
+            "object"
+        ]
+    },
+    {
+        "name": "jsnlib/joomla_easy_request",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fdjkgh580/jsnlib-joomla_easy_request.git",
+            "reference": "a5aaf39b4d0c0b99756ac5a1eda2c79d81b7787a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fdjkgh580/jsnlib-joomla_easy_request/zipball/a5aaf39b4d0c0b99756ac5a1eda2c79d81b7787a",
+            "reference": "a5aaf39b4d0c0b99756ac5a1eda2c79d81b7787a",
+            "shasum": ""
+        },
+        "require": {
+            "jsnlib/ao": ">=1.2.1",
+            "php": ">=5.4.0"
+        },
+        "time": "2018-05-22T09:10:18+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Jsnlib\\": "src\\"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "Joomla! 中使用 POST 或 GET 更簡單",
+        "keywords": [
+            "easy",
+            "get",
+            "joomla",
+            "post"
+        ]
+    },
+    {
+        "name": "sunra/php-simple-html-dom-parser",
+        "version": "v1.5.2",
+        "version_normalized": "1.5.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sunra/php-simple-html-dom-parser.git",
+            "reference": "75b9b1cb64502d8f8c04dc11b5906b969af247c6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sunra/php-simple-html-dom-parser/zipball/75b9b1cb64502d8f8c04dc11b5906b969af247c6",
+            "reference": "75b9b1cb64502d8f8c04dc11b5906b969af247c6",
+            "shasum": ""
+        },
+        "require": {
+            "ext-mbstring": "*",
+            "php": ">=5.3.2"
+        },
+        "time": "2016-11-22T22:57:47+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Sunra\\PhpSimple\\HtmlDomParser": "Src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Sunra",
+                "email": "sunra@yandex.ru",
+                "homepage": "https://github.com/sunra"
+            },
+            {
+                "name": "S.C. Chen",
+                "homepage": "http://sourceforge.net/projects/simplehtmldom/"
+            }
+        ],
+        "description": "Composer adaptation of: A HTML DOM parser written in PHP5+ let you manipulate HTML in a very easy way! Require PHP 5+. Supports invalid HTML. Find tags on an HTML page with selectors just like jQuery. Extract contents from HTML in a single line.",
+        "homepage": "https://github.com/sunra/php-simple-html-dom-parser",
+        "keywords": [
+            "dom",
+            "html",
+            "parser"
+        ]
+    }
+]

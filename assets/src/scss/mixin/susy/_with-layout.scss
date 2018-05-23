@@ -1,0 +1,18 @@
+@mixin with-layout(
+    $config
+) {
+    //  parse and normalize any shorthand arguments
+    $config: susy-compile($config);
+ 
+    // record the global settings -
+    // and update the global variable with our new settings
+    $global: $susy;
+    $susy: map-merge($susy, $config) !global;
+ 
+    // any content inside this mixin
+    // will use the local settings
+    @content;
+ 
+    // return the global variable to its initial value
+    $susy: $global !global;
+}

@@ -1,0 +1,36 @@
+// https://github.com/oddbird/susy/issues/648
+@mixin gallery(
+    $span,
+    $config: ()
+) {
+    $grid: susy-compile($span, $config);
+    $span: map-get($grid, 'span');
+    $column-count: length(map-get($grid, 'columns'));
+    $count: floor($column-count / $span);
+    $spread: map-get($grid, 'spread') + 2;
+    $container-spread: map-get($grid, 'container-spread') + 2;
+    $extra: ($container-spread - $spread) * 0.5;
+    $extra-push: su-call('su-gutter', $grid) * $extra;
+    
+    float: left;
+    margin-right: -100%;
+ 
+    @for $n from 1 through ($count) {
+        $nth: unquote('#{$count}n + #{$n}');
+        $location: $span * ($n - 1) + 1;    
+        
+        &:nth-child(#{$nth}) {
+            $width: susy-compile($span at $location, $grid);
+            width: su-call('su-span', $width);
+ 
+            @if ($location > 1) {
+                $wide: susy-compile('first' $location - 1 'wide', $grid);
+                clear: none;
+                margin-left: su-call('su-span', $wide) + $extra-push;
+            } @else {
+                clear: both;
+                margin-left: if($extra-push > 0, $extra-push, 0);
+            }
+        }
+    }
+}

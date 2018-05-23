@@ -1,0 +1,14 @@
+{
+    "name": "fdjkg/handicapfree",
+    "authors": [
+        {
+            "name": "fdjkgh580",
+            "email": "fdjkgh580@gmail.com"
+        }
+    ],
+    "require": {
+        "jsnlib/ao": "^1.2",
+        "sunra/php-simple-html-dom-parser": "^1.5",
+        "jsnlib/joomla_easy_request": "^1.0"
+    }
+}

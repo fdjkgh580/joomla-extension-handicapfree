@@ -1,0 +1,24 @@
+@mixin susy-breakpoint(
+    $config
+) {
+    //  parse and normalize any shorthand arguments
+    $config: susy-compile($config);
+ 
+    // build min-and-max queries
+    $min: map-get($config, 'min-width');
+    $min: if($min, '(min-width: #{$min})', null);
+    $max: map-get($config, 'max-width');
+    $max: if($max, '(max-width: #{$max})', null);
+ 
+    // combine them if we need both
+    $and: if($min and $max, '#{$min} and #{$max}', null);
+    // or fall back to the value we need…
+    $query: $and or $min or $max;
+ 
+    // apply the results…
+    @media #{$query} {
+        @include with-layout($config) {
+            @content;
+        }
+    }
+}

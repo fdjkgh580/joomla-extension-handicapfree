@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="system" method="upgrade">
+    <name>plgSystemHandicapfree</name>
+    <author>Jason</author>
+    <creationDate>2018-05-18</creationDate>
+    <authorEmail>fdjkgh580@gmail.com</authorEmail>
+    <version>1.0.0</version>
+    <description>無障礙檢查</description>
+    <files>
+        <folder plugin="handicapfree">assets</folder>
+        <folder plugin="handicapfree">vendor</folder>
+
+        <filename plugin="handicapfree">composer.json</filename>
+        <filename plugin="handicapfree">handicapfree.php</filename>
+        <filename plugin="handicapfree">package.json</filename>
+        <filename plugin="handicapfree">webpack.config.js</filename>
+    </files>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="match-url" type="textarea" default="" label="斷行分隔要啟用比對的網址" description="若網址中出局部出現指定的網址，將會啟用" rows="50" cols="20" />
+            </fieldset>
+        </fields>
+    </config>
+    
+</extension>

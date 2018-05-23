@@ -1,0 +1,43 @@
+// 底下的 class 名稱例如 .mobile 的命名，對應到 config/_susy.scss 的變數名稱
+@mixin susyScreen() {
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+
+
+    .mobile {
+        @include susy-breakpoint($mobile) {
+            display: block;
+        }
+        @include susy-breakpoint($pad) {
+            display: none;
+        }
+        @include susy-breakpoint($desktop) {
+            display: none;
+        }
+    }
+
+    .pad {
+        @include susy-breakpoint($mobile) {
+            display: none;
+        }
+        @include susy-breakpoint($pad) {
+            display: block;
+        }
+        @include susy-breakpoint($desktop) {
+            display: none;
+        }
+    }
+
+    .desktop {
+        @include susy-breakpoint($mobile) {
+            display: none;
+        }
+        @include susy-breakpoint($pad) {
+            display: none;
+        }
+        @include susy-breakpoint($desktop) {
+            display: block;
+        }
+    }
+}
