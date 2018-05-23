@@ -14,6 +14,7 @@
         <filename plugin="handicapfree">handicapfree.php</filename>
         <filename plugin="handicapfree">package.json</filename>
         <filename plugin="handicapfree">webpack.config.js</filename>
+        <filename plugin="handicapfree">README.md</filename>
     </files>
 
     <config>
