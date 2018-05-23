@@ -281,6 +281,8 @@ class plgSystemHandicapfree extends JPlugin
             // 取得文章文本並改寫
             $dom = HtmlDomParser::str_get_html($jform['articletext']);
 
+            if (empty($dom)) return false;
+
             $dom = $this->removeTableAttr($dom);
             $dom = $this->addThScope($dom);
             $dom = $this->removeImgAttr($dom);
