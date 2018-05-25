@@ -2,7 +2,7 @@
 import '../scss/index.scss';
  
 // 載入 jQuery Plugin
-import '../../../node_modules/vmodel.js/src/jquery.vmodel.min.js';
+import '../../../node_modules/vmodel.js/dist/jquery.vmodel.min.js';
 import '../../../node_modules/jquery.transit/jquery.transit.js';
 
 
