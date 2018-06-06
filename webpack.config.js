@@ -1,6 +1,7 @@
 const webpack = require('webpack'); 
 const path = require('path');
- 
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 module.exports = {
     // 監聽
     watch: true,
@@ -18,6 +19,19 @@ module.exports = {
         path: path.resolve(__dirname, 'assets/dist'), // JS 輸出點路徑
         filename: '[name].js'
     },
+
+    // devtool: 'source-map',
+
+    // 讓 jQuery 可以在不同的文件使用
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        }),
+        // new UglifyJSPlugin({
+        //     sourceMap: true
+        // })
+    ],
  
     // 優化設置
     optimization: {
@@ -36,14 +50,6 @@ module.exports = {
             }
         }
     },
-    
-    // 讓 jQuery 可以在不同的文件使用
-    plugins: [
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery'
-        }),
-    ],
     
     // SUSY SASS 相關設置
     module: {

@@ -182,8 +182,56 @@ $(function (){
                 return ['openFile', href, fileName, extName];
             }
 
+            // <a> 的所有集中盒子
+            this.aBox = [];
+
+            /**
+             * 計算集合重複的次數
+             * @param  array/object box 集合
+             * @param  int/string   key 可選擇要找的鍵 
+             * @return int/object   若指定 key 將返回次數；若不指定 key 將返回計算器物件
+             */
+            var _collectionRepeat = function(box, key){
+                var counter = {};
+                
+                box.forEach(function(x) { 
+                    counter[x] = (counter[x] || 0) + 1; 
+                });
+                
+                var val = counter[key];
+
+                if (key === undefined) {
+                    return counter;
+                }
+                
+                return (val) === undefined ? 0 : val;
+            }
+
+            
+
+            // 檢查網址是否重複
+            var _ahref = function (htmlWrap){
+
+                var aBox = [];
+                $(htmlWrap).find("a").each(function (){
+                    var href = $(this).attr('href')
+                    aBox.push(href);
+                })
+
+                var obj = _collectionRepeat(aBox);
+
+                $.each(obj, function (href, count){
+                    if (count <= 1) return true;
+
+                    var repeatCount = count - 1;
+                    var text = '無障礙：連結重複了 ' + repeatCount + ' 次，請合併圖文連結或刪除空白連結：' + href;
+                    $.vmodel.get("message").add(text);
+                    
+                })
+            }
+
             // 重複監聽著...
-            this.repeat = function (){
+            this.repeat = function (htmlWrap){
 
                 setInterval(function (){
                     vs.checkOnce();
@@ -200,6 +248,9 @@ $(function (){
                 
                 // 檢查是否有開放文件
                 _openFile(htmlWrap);
+
+                // 檢查網址是否重複
+                _ahref(htmlWrap);
 
                 // 渲染訊息
                 // 解鎖
