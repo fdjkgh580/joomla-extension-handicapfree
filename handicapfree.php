@@ -30,12 +30,12 @@ class plgSystemHandicapfree extends JPlugin
         ');
     }
  
-    // 若是存文章
+    // 若是存文章，那麼 jform 會包含一個由 JS 產生出來的 enable_handicapfree
     private function ifSaveArticle($callback)
     {
         $jform = $this->post('jform', null, 'array');
 
-        if (isset($jform['articletext']))
+        if (isset($jform['enable_handicapfree']) and $jform['enable_handicapfree'] === "true") 
         {
             $callback($jform);
         }
@@ -275,41 +275,46 @@ class plgSystemHandicapfree extends JPlugin
             $this->addScriptHelper();
         }
 
-        // 若偵測到儲存文章
+        // 若偵測到儲存文章，並符合啟用 handicapfree
         $this->ifSaveArticle(function ($jform)
         {
-            // 取得文章文本並改寫
-            $dom = HtmlDomParser::str_get_html($jform['articletext']);
+            // 檢查每個 jform 裡面的值並替換，可以確保不漏失 textarea。因為無法得知前端的 textarea 使用的名稱
+            foreach ($jform as $key => $value)
+            {
+                // 取得文本並改寫
+                $dom = HtmlDomParser::str_get_html($jform[$key]);
 
-            if (empty($dom)) return false;
+                if (empty($dom)) continue;
 
-            $dom = $this->removeTableAttr($dom);
-            $dom = $this->addThScope($dom);
-            $dom = $this->removeImgAttr($dom);
-            $dom = $this->addImgFigure($dom);
-            $dom = $this->removeEmptyElement($dom, ['a', 'figure']);
+                $dom = $this->removeTableAttr($dom);
+                $dom = $this->addThScope($dom);
+                $dom = $this->removeImgAttr($dom);
+                $dom = $this->addImgFigure($dom);
+                $dom = $this->removeEmptyElement($dom, ['a', 'figure']);
 
-            // 更動 $_POST 文章內容
-            $this->updateJform($dom);
+                // 更動 $_POST 內容
+                $this->updateJform($key, $dom);
+            }
 
-            // print_r($this->post('jform', null, 'array'));
-            // die;
+            // debug
+            // $jform2 = $this->post('jform', null, 'array');
+            // print_r($jform2); die;
         });
 
     }
 
     /**
      * 替換編輯器內文
+     * @param string/int 對應 jform[key] 中的鍵
      * @param simplehtmldom_1_5\simple_html_dom $dom HTML 的整體文本
      */
-    private function updateJform($dom)
+    private function updateJform($key, $dom)
     {
         $defJform = $this->post('jform', null, 'array');
 
         // 僅修改單一項目，其餘不理會
-        $defJform['articletext'] = $dom->outertext;
+        $defJform[$key] = $dom->outertext;
 
-        // 目標是替換 $_POST['jform']['articletext']
         $this->post->set('jform', $defJform);
     }
 

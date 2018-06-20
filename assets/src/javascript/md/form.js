@@ -1,6 +1,6 @@
 $(function (){
     $.vmodel.create({
-        selector: 'form[name=adminForm]',
+        selector: 'form',
         model: '--form',
         isautoload: false,
         method: function (){
@@ -9,6 +9,14 @@ $(function (){
             this.init = function (){
                 // 預設上鎖
                 vs.disable();
+
+                // 添加一個辨識要啟用的 input
+                vs.addCheckValue();
+            }
+
+            // 在 form 表單添加隱藏元素，送出後由後端辨識是否有這個隱藏值，若有的畫，將會運行相關後端處理
+            this.addCheckValue = function (){
+                vs.root.prepend('<input type="hidden" name="jform[enable_handicapfree]" value="true">');
             }
 
             this.submit = function (){
