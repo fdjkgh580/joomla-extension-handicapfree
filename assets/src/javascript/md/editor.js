@@ -41,7 +41,8 @@ $(function (){
                     var content = tinyMCE.activeEditor.getContent();
                 }
                 else if (current === "JCE") {
-                    var content = vs.root.find("#jform_articletext_ifr").contents().find("body").html();
+                    var JCEiframe = vs.root.find(".mceIframeContainer").find("iframe");
+                    var content = JCEiframe.contents().find("body").html();
                 }
                 else if (current === false) {
                     console.log('找不到編輯器');
