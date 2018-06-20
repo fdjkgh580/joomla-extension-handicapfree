@@ -250,7 +250,7 @@ $(function (){
                 _openFile(htmlWrap);
 
                 // 檢查網址是否重複
-                _ahref(htmlWrap);
+                // _ahref(htmlWrap);
 
                 // 渲染訊息
                 // 解鎖
