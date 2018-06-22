@@ -25,9 +25,6 @@ class plgSystemHandicapfree extends JPlugin
         $document = JFactory::getDocument();
         $document->addScript(JURI::root() . "plugins/system/handicapfree/assets/dist/vendors.js?t={$t}");
         $document->addScript(JURI::root() . "plugins/system/handicapfree/assets/dist/index.js?t={$t}");
-        $document->addScriptDeclaration('
-            console.log("!!! 開發中，目前啟用 handicapfree !!!")
-        ');
     }
  
     // 若是存文章，那麼 jform 會包含一個由 JS 產生出來的 enable_handicapfree
