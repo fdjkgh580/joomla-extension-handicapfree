@@ -252,6 +252,25 @@ class plgSystemHandicapfree extends JPlugin
 
         return $this->renderDOM($dom);
     }
+
+    // $value 包含 html tag？
+    private function isIncludeHtml($value)
+    {
+        return $value != strip_tags($value) 
+            ? true
+            : false;
+    }
+
+    // $value 不包含 html tag？
+    private function isNotIncludeHtml($value)
+    {
+        return !$this->isIncludeHtml($value) ? true : false;
+    }
+
+    private function isNotString($value)
+    {
+        return !is_string($value) ? true : false;
+    }
  
     public function onAfterInitialise()
     {
@@ -275,9 +294,24 @@ class plgSystemHandicapfree extends JPlugin
         // 若偵測到儲存文章，並符合啟用 handicapfree
         $this->ifSaveArticle(function ($jform)
         {
+
             // 檢查每個 jform 裡面的值並替換，可以確保不漏失 textarea。因為無法得知前端的 textarea 使用的名稱
             foreach ($jform as $key => $value)
             {
+
+                // 若值不是字串，或不包含 HTML 則跳過
+                if ($this->isNotString($value) or $this->isNotIncludeHtml($value)) 
+                {
+                    continue;
+                }
+
+                // (new \Jsnlib\Ao([
+                //     'key' => $key,
+                //     'value' => $value,
+                //     'type' => gettype($value)
+                // ]))->log();
+
+
                 // 取得文本並改寫
                 $dom = HtmlDomParser::str_get_html($jform[$key]);
 
