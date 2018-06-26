@@ -21,7 +21,7 @@
 ### ````<table>````
 - ````<table>```` 移除所有屬性
 - ````<th>```` 自動添加屬性 scope="col"，移除所有屬性除了 scope、colspan、rowspan
-- ````<td>```` 自動添加屬性 scope="col"，移除所有屬性除了 colspan、rowspan
+- ````<td>```` 移除所有屬性除了 colspan、rowspan
 
 ### ````<a>```` ````<figure>````
 - 若空白內容，則移除元素
