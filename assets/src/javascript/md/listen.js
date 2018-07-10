@@ -1,4 +1,5 @@
 $(function (){
+
     $.vmodel.create({
         selector: 'body',
         model: '--listen',
@@ -7,6 +8,12 @@ $(function (){
             
             var vs = this;
             this.autoload = ['init', 'repeat'];
+
+            this.store = {
+                isLock: null // 預設不指定
+            }
+
+
             this.init = function (){
                 
             }
@@ -238,6 +245,7 @@ $(function (){
                 }, 50);
             }
 
+           
             // 單次觸發，交由外部指定
             this.checkOnce = function (){
                 var htmlOrg = $.vmodel.get("editor").getHtml();
@@ -258,6 +266,7 @@ $(function (){
                     $.vmodel.get("form").enable();
                     $.vmodel.get("message").hide(function (){
                         $.vmodel.get("message").clean();
+                        vs.triggerGlobalClass('unlock');
                     });
                     return true;
                 } 
@@ -265,9 +274,41 @@ $(function (){
                 else {
                     $.vmodel.get("form").disable();
                     $.vmodel.get("message").render();
+                    vs.triggerGlobalClass('lock');
                     return false;
                 }
 
+            }
+
+            
+
+            /**
+             * 可選擇的觸發 window.BridgeHandicapfree，window.BridgeHandicapfree 
+             * 須由使用者自行定義。
+             * 
+             * 上鎖會觸發 window.BridgeHandicapfree.lock()
+             * 解鎖會觸發 window.BridgeHandicapfree.unlock()
+             */
+            this.triggerGlobalClass = function (status){
+
+                // 上鎖
+                if (status == "lock"){
+                    if (vs.store.isLock === true) return false;
+                    vs.store.isLock = true;
+
+                    if (window.BridgeHandicapfree === undefined) return false;
+
+                    window.BridgeHandicapfree.lock();
+                } 
+
+                // 解鎖
+                else if (status == "unlock") {
+                    vs.store.isLock = false;
+
+                    if (window.BridgeHandicapfree === undefined) return false;
+
+                    window.BridgeHandicapfree.unlock();
+                }
             }
         }
     });
