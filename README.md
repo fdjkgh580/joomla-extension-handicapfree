@@ -12,6 +12,12 @@
 - 在「斷行分隔要啟用比對的網址」貼上要比對的網址。例如希望在「內容 > 文章 > 新增文章」啟用外掛，那麼因為新增文章的網址是「 http://domain/joomla-dev/administrator/index.php?option=com_content&view=article&layout=edit 」，所以我們將網址貼上。在修改文章時網址會出現 「......&id=3」，但因為是比對出現次數，前方的網址字串符合我們的設定網址，所以在修改文章時同樣會啟用外掛。
 - 想在不同編輯器啟用外掛，就貼上不同的比對網址。注意，使用 Enter 鍵斷行即可。
 
+## 選用設定
+### window.BridgeHandicapfree
+- 可自行定義一個全域 ````window.BridgeHandicapfree.lock()```` 與 ````window.BridgeHandicapfree.unlock()```` 來橋接任何外部的 JavaScript。
+- 當出現無障礙錯誤，會回呼 window.BridgeHandicapfree.lock()
+- 沒有任何無障礙錯誤則會回呼 window.BridgeHandicapfree.unlock()
+
 ## 送出後自動處理
 ### ````<img>````
 - 使用 ````<figure>```` 包圍
