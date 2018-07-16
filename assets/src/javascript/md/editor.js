@@ -23,6 +23,7 @@ $(function (){
                         Joomla.renderMessages({
                             'warning': ['無障礙：請切換編輯器標籤為 Editor']
                         })
+                        $.vmodel.get("listen").triggerGlobalClass("lock");
                         return false;
                     }
                     return true;
