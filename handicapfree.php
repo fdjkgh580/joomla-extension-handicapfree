@@ -65,10 +65,13 @@ class plgSystemHandicapfree extends JPlugin
             $replaceCurrentUrl = str_replace(JUri::root(), null, $currentUrl);
             $replaceCurrentUrl = trim($replaceCurrentUrl, "\ /");
 
-            // 完整比對不符合
-            if ($replaceCurrentUrl != $searchUrl) continue;
+
+            $position = strpos($replaceCurrentUrl, $searchUrl);
+
+            if ($position === false) continue;
 
             $isFind = true;
+
             break;
         }
 
