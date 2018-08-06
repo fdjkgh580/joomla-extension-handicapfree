@@ -21,7 +21,7 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
-                <field name="match-url" type="textarea" default="" label="斷行分隔要啟用比對的網址" description="若網址中出局部出現指定的網址，將會啟用" rows="50" cols="20" />
+                <field name="match-url" type="textarea" default="" label='斷行分隔要啟用比對的路徑，開頭不含斜線或反斜線' description="例如啟用網址是 「http://domain/administrator/index.php?option=com_blog...」 那麼請填入 「administrator/index.php?option=com_blog...」" rows="50" cols="20" />
             </fieldset>
         </fields>
     </config>
