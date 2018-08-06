@@ -54,20 +54,22 @@ class plgSystemHandicapfree extends JPlugin
     private function isFindUrlInConfig($currentUrl, $matchUrlBox)
     {
         $isFind = false;
-        
 
         foreach ($matchUrlBox as $key => $searchUrl)
         {
             if (empty($searchUrl)) continue;
-            
-            $position = strpos($currentUrl, $searchUrl);
 
-            // 網址比對的位置應該要在第一個
-            if ($position === 0) 
-            {
-                $isFind = true;
-                break;
-            }
+            // JUri::root() 例如 http://192.168.42.137:8089/
+            
+            // => administrator/index.php.....
+            $replaceCurrentUrl = str_replace(JUri::root(), null, $currentUrl);
+            $replaceCurrentUrl = trim($replaceCurrentUrl, "\ /");
+
+            // 完整比對不符合
+            if ($replaceCurrentUrl != $searchUrl) continue;
+
+            $isFind = true;
+            break;
         }
 
         return $isFind;
