@@ -19,14 +19,19 @@ $(function (){
                 vs.root.prepend('<input type="hidden" name="jform[enable_handicapfree]" value="true">');
             }
 
+            // 為了避免手動關閉錯誤訊息，送出前務必確保沒有問題。
             this.submit = function (){
                 vs.root.on("submit", function (){
+
+                    // 若停止監聽，將直接送出表單
+                    var isStop = $.vmodel.get("listen").store.isStop;
+                    if (isStop === true) return true;
 
                     // 要求切換到編輯器
                     var result = $.vmodel.get("editor").enforce();
                     if (result === false) return false;
 
-                    // 送出前務必確保沒有問題。清空舊訊息，可以被重新渲染
+                    // 清空舊訊息，可以被重新渲染
                     $.vmodel.get("message").clean();
                     var result = $.vmodel.get("listen").checkOnce();
 

@@ -33,9 +33,13 @@ $(function (){
                 }
             }
 
-            // 取得編輯器的 HTML
-            this.getHtml = function (){
-                var content = false;
+            /**
+             * 取得編輯器的 HTML
+             * @param  {callable} error             找不到編輯器時
+             * @return {string}                     取得的 HTML
+             */
+            this.getHtml = function (param){
+                var content = null;
                 var current = vs.currEditor();
 
                 if (current === "tinyMCE") {
@@ -46,7 +50,7 @@ $(function (){
                     var content = JCEiframe.contents().find("body").html();
                 }
                 else if (current === false) {
-                    console.log('找不到編輯器');
+                    param.error();
                 }
 
                 return content;

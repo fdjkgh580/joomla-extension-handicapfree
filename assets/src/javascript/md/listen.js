@@ -10,7 +10,11 @@ $(function (){
             this.autoload = ['init', 'repeat'];
 
             this.store = {
-                isLock: null // 預設不指定
+                // 預設不指定
+                isLock: null,
+
+                // 一旦為 true，將會停止 1.監聽 2.送出表單前的檢查
+                isStop: false
             }
 
 
@@ -240,15 +244,40 @@ $(function (){
             // 重複監聽著...
             this.repeat = function (htmlWrap){
 
-                setInterval(function (){
+                var intervalId = setInterval(function (){
+
+                    // 若停止監聽將刪除循環
+                    if (vs.store.isStop === true) {
+                        clearInterval(intervalId)
+                        return false
+                    }
+
                     vs.checkOnce();
+
                 }, 50);
+
             }
 
            
-            // 單次觸發，交由外部指定
-            this.checkOnce = function (){
-                var htmlOrg = $.vmodel.get("editor").getHtml();
+            /**
+             *  單次觸發，交由外部指定
+             *  注意，這個方法會在兩個地方被使用
+             *      1. vs.repeat()
+             *      2. $.vmodel.get('form').submit();
+             *  所以若打算在 checkOnce() 之前做一些處理動作，請務必在這兩個地方添加
+             *
+             * @param {callable} param.success 
+             */
+            this.checkOnce = function (param){
+
+                var htmlOrg = $.vmodel.get("editor").getHtml({
+                    // 找不到編輯器，將停止監聽
+                    error: function (){
+                        console.log('找不到編輯器，將停止監聽')
+                        vs.store.isStop = true;
+                    }
+                });
+
                 var htmlWrap = "<div class='listen-html-org'>" + htmlOrg + "</div>";
 
                 // 表格處理
@@ -277,7 +306,6 @@ $(function (){
                     vs.triggerGlobalClass('lock');
                     return false;
                 }
-
             }
 
             

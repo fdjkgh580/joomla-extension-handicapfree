@@ -18,18 +18,18 @@ import './md/listen.js';
 import './md/editor.js';
 import './md/message.js';
 import './md/form.js';
+import './md/button.js';
 
 
 
 $(function (){
 
+    console.log('載入無障礙偵測');
+
     $.vmodel.get("editor", true);
     $.vmodel.get("listen", true);
     $.vmodel.get("message", true);
     $.vmodel.get("form", true);
-    
-
-    
-
+    $.vmodel.get("button", true);
     
 })
