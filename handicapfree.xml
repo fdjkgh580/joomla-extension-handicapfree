@@ -4,7 +4,7 @@
     <author>Jason</author>
     <creationDate>2018-08-06</creationDate>
     <authorEmail>fdjkgh580@gmail.com</authorEmail>
-    <version>1.2.5</version>
+    <version>1.2.6</version>
     <description>無障礙檢查</description>
     <files>
         <folder plugin="handicapfree">assets</folder>
